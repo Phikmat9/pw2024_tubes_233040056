@@ -1,3 +1,17 @@
+<?php
+if (isset($_POST["submit"])) {
+    if ($_POST["username"] == "hikmat.pandu" && $_POST["password"] == "unpas925") {
+        header("Location: admin.php");
+        exit;
+    } else {
+        $eror = true;
+    }
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,6 +25,10 @@
     />
   </head>
   <body>
+  <?php if (isset($eror)) : ?>
+            <p>Username / Password salah!</p>
+        <?php endif; ?>
+
     <div class="wrapper">
       <form action="">
         <h1>Login</h1>

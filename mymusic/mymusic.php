@@ -23,7 +23,7 @@ $music= query("select * from music");
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="#"><h1>MyMusic</h1></a>
         </li>
       </ul>
       <form class="d-flex" role="search">
@@ -35,7 +35,7 @@ $music= query("select * from music");
 </nav>
 
 <div class="container">
-  <h1>MyMusic</h1>
+ 
 
   <a href="tambah.php" class="btn btn-primary">+</a>
 
@@ -65,6 +65,8 @@ $music= query("select * from music");
           <td><?= $msc ['genre']; ?></td>
           <td><?= $msc ['durasi']; ?></td>
           <td>
+            <a href="#"><span class="badge text-bg-info">Download</span></a>
+            <a href="ubah.php?id=<?= $msc["id"];?>"><span class="badge text-bg-warning">Ubah</span></a>
             <a href="hapus.php?id=<?= $msc["id"];?>"><span class="badge text-bg-danger">Hapus</span></a>
           </td>
         </tr>

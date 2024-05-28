@@ -47,5 +47,29 @@
     
     }
 
+    function ubah ($data)
+{
+    $conn = koneksi();
+
+    $id =  htmlspecialchars ($data['id']);
+    $judul =  htmlspecialchars ($data['judul']);
+    $artis =  htmlspecialchars ($data['artis']);
+    $album =  htmlspecialchars ($data['album']);
+    $genre =  htmlspecialchars ($data['genre']);
+    $durasi =  htmlspecialchars ($data['durasi']);
+
+    $query = "UPDATE music SET
+                judul = '$judul',
+                artis = '$artis',
+                album = '$album',
+                genre = '$genre',
+                durasi = '$durasi'
+            WHERE id = $id
+                ";
+
+    mysqli_query($conn, $query) or die (mysqli_error($conn));
+    return mysqli_affected_rows($conn);
+}
+
 
 ?>
