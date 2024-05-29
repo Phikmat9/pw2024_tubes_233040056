@@ -1,53 +1,51 @@
 <?php
+function koneksi(){
+    $db = mysqli_connect('localhost', 'root', '', 'pw2024_tubes_233040056') or die ('koneksi ke db gagal');
+    return $db;
+}
 
-    function koneksi()
-    {
-        $db = mysqli_connect('localhost', 'root', '', 'pw2024_tubes_233040056' );
-        return $db;
-    }
-
-
-    function query($db)
-    {
-        $conn = koneksi();
-        $result = mysqli_query($conn, 'SELECT * FROM music');
-        $rows = [];
-        while($row = mysqli_fetch_assoc($result))
-            {
-             $rows[] = $row;
-            }
-        return $rows;
-    }
+function query($sql){
+$conn = koneksi();
 
 
-  
-    function tambah($data){
+$result = mysqli_query($conn, $sql);
 
-    $conn = koneksi();
+$rows = [];
+while($row = mysqli_fetch_assoc($result)){
+        $rows[] = $row;
+}
 
-    $judul = $data['judul'];
-    $artis = $data['artis'];
-    $album = $data['album'];
-    $genre = $data['genre'];
-    $durasi = $data['durasi'];
-    
-    $sql = "INSERT INTO music
-              VALUES (null, '$judul', '$artis', '$album', '$genre', '$durasi')
-            ";
-
-    mysqli_query($conn, $sql);
+return $rows;
 }
 
 
-    function hapus($id){
-        $conn = koneksi();
-        mysqli_query($conn, "DELETE FROM music WHERE id = $id") or die(mysqli_error($conn));
-    
-        return mysqli_affected_rows($conn);
-    
-    }
+function tambah ($data)
+{
+    $conn = koneksi();
 
-    function ubah ($data)
+    $judul =  htmlspecialchars ($data['judul']);
+    $artis =  htmlspecialchars ($data['artis']);
+    $album =  htmlspecialchars ($data['album']);
+    $genre =  htmlspecialchars ($data['genre']);
+    $durasi =  htmlspecialchars ($data['durasi']);
+
+    $sql = "INSERT INTO music
+            VALUES (null, '$judul', '$artis', '$album', '$genre','$durasi')
+    ";
+
+    mysqli_query($conn, $sql) or die (mysqli_error($conn));
+
+    return mysqli_affected_rows($conn);
+}
+
+function hapus($id)
+{
+    $conn = koneksi();
+    mysqli_query($conn, "DELETE FROM music WHERE id = $id") or die(mysqli_error($conn));
+    return mysqli_affected_rows($conn);
+}
+
+function ubah ($data)
 {
     $conn = koneksi();
 
@@ -57,7 +55,6 @@
     $album =  htmlspecialchars ($data['album']);
     $genre =  htmlspecialchars ($data['genre']);
     $durasi =  htmlspecialchars ($data['durasi']);
-
     $query = "UPDATE music SET
                 judul = '$judul',
                 artis = '$artis',
@@ -69,6 +66,17 @@
 
     mysqli_query($conn, $query) or die (mysqli_error($conn));
     return mysqli_affected_rows($conn);
+}
+
+function cari($keyword){
+    $query = "SELECT * FROM music
+                WHERE
+                judul like '%$keyword%' OR
+                artis like '%$keyword%' OR
+                album like '%$keyword%' OR
+                genre like '%$keyword%' 
+                ";
+    return query($query);
 }
 
 

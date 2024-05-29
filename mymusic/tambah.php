@@ -1,17 +1,16 @@
 <?php
 require 'functions.php';
+// cek apakah tombol tambah sudah di klilk atau belum
+if (isset($_POST['tambah'])) {
 
-// cek apakah tombol tambah sudah ditutup
-if (isset($_POST["tambah"])){
-
-  // cek apakah data berhasil ditambahkan
- if (tambah ($_POST) > 0){
- echo "<script>
-        alert ('data berhasil ditambahkan');
-
-        documet.location.href = 'mymusic.php'; 
-       </script>";
- }
+    if (tambah($_POST) > 0) {
+        echo "<script>
+    alert('data berhasil ditambahkan');
+    document.location.href = 'index.php';
+    </script>";
+    } else {
+        echo "data gagal ditambahkan!";
+    }
 }
 
 ?>
@@ -29,27 +28,27 @@ if (isset($_POST["tambah"])){
 
     <div class="container ">
 
-        <h1>Tambah Data Music</h1>
+        <h1>Tambah Data music</h1>
             
         <form action="" method="post">
             <div class="mb-3">
-                <label for="judul" class="form-label">Judul</label>
+                <label for="judul" class="form-label">judul</label>
                 <input type="text" class="form-control" id="judul" name="judul">
             </div>
             <div class="mb-3">
-                <label for="artis" class="form-label">Artis</label>
+                <label for="artis" class="form-label">artis</label>
                 <input type="text" class="form-control" id="artis" name="artis">
             </div>
             <div class="mb-3">
-                <label for="album" class="form-label">Album</label>
+                <label for="album" class="form-label">album</label>
                 <input type="text" class="form-control" id="album" name="album">
             </div>
             <div class="mb-3">
-                <label for="genre" class="form-label">Genre</label>
+                <label for="genre" class="form-label">genre</label>
                 <input type="text" class="form-control" id="genre" name="genre">
             </div>
             <div class="mb-3">
-                <label for="durasi" class="form-label">Durasi</label>
+                <label for="durasi" class="form-label">durasi</label>
                 <input type="text" class="form-control" id="durasi" name="durasi">
             </div>
 
