@@ -46,6 +46,7 @@ if (isset($_POST["cari"])){
   <thead>
     <tr>
       <th scope="col">#</th>
+      <th scope="col">gambar</th>
       <th scope="col">judul</th>
       <th scope="col">artis</th>
       <th scope="col">album</th>
@@ -59,6 +60,7 @@ if (isset($_POST["cari"])){
      foreach($music as $msc) :   ?>
     <tr>
       <td><?= $i++?></td>
+      <td><?= $msc['gambar']; ?></td>
       <td><?= $msc['judul']; ?></td>
       <td><?= $msc['artis']; ?></td>
       <td><?= $msc['album']; ?></td>

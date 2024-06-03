@@ -36,6 +36,10 @@ if (isset($_POST['ubah'])) {
         <form action="" method="post">
             <input type="hidden" name="id" value="<?= $msc['id']; ?>">
             <div class="mb-3">
+                <label for="gambar" class="form-label">gambar</label>
+                <input type="file" class="form-control" id="gambar" name="gambar" required value="<?= $msc['gambar']; ?>">
+            </div>
+            <div class="mb-3">
                 <label for="judul" class="form-label">judul</label>
                 <input type="text" class="form-control" id="judul" name="judul" required value="<?= $msc['judul']; ?>">
             </div>

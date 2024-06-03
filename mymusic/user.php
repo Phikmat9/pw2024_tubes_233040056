@@ -38,14 +38,14 @@ if (isset($_POST["cari"])){
 <?php $i=1;
      foreach($music as $msc) :   ?>
 <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
+  <img src="../images/logo_default.jpg" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title"><?= $msc['judul']; ?></h5>
     <p class="card-text"><h6><?= $msc['artis']; ?></h6></p>
     <p class="card-text"><h6><?= $msc['album']; ?></h6></p>
     <p class="card-text"><?= $msc['genre']; ?></p>
     <p class="card-text"><?= $msc['durasi']; ?></p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-primary">Download</a>
   </div>
 </div>
 <?php endforeach; ?>
