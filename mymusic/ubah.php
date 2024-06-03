@@ -10,7 +10,7 @@ if (isset($_POST['ubah'])) {
     if (ubah($_POST) > 0) {
         echo "<script>
     alert('data berhasil diubah');
-    document.location.href = 'index.php';
+    document.location.href = 'admin.php';
     </script>";
     } else {
         echo "data gagal ditambahkan!";

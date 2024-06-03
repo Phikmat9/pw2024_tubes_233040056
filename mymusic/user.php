@@ -17,10 +17,10 @@ if (isset($_POST["cari"])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My Music</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="/tampilan/style.css" />
+    <link rel="stylesheet" href="../tampilan/style copy.css" />
   </head>
   <body>
-<header>
+  <header>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"><h1>MyMusic</h1></a>
@@ -32,44 +32,31 @@ if (isset($_POST["cari"])){
     </div>
   </div>
   </nav>
-</header>
+  </header>
 
-    <div class="container">
-        <a href="tambah.php" class="btn btn-primary">Tambah Daftar music</a>
 
-        <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">judul</th>
-      <th scope="col">artis</th>
-      <th scope="col">album</th>
-      <th scope="col">genre</th>
-      <th scope="col">durasi</th>
-      <th scope="col">action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php $i=1;
+<?php $i=1;
      foreach($music as $msc) :   ?>
-    <tr>
-      <td><?= $i++?></td>
-      <td><?= $msc['judul']; ?></td>
-      <td><?= $msc['artis']; ?></td>
-      <td><?= $msc['album']; ?></td>
-      <td><?= $msc['genre']; ?></td>
-      <td><?= $msc['durasi']; ?></td>
-      <td>
-        <a href="ubah.php?id=<?= $msc['id'];?>"  class="badge text-bg-warning">Ubah</a>
-        <a href="hapus.php?id=<?= $msc["id"];?>" onclick="return confirm('yakin?');"><span class="badge text-bg-danger">Hapus</span></a>
-      </td>
-    </tr>
-    <?php endforeach; ?>
-  </tbody>
-</table>
+<div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"><?= $msc['judul']; ?></h5>
+    <p class="card-text"><h6><?= $msc['artis']; ?></h6></p>
+    <p class="card-text"><h6><?= $msc['album']; ?></h6></p>
+    <p class="card-text"><?= $msc['genre']; ?></p>
+    <p class="card-text"><?= $msc['durasi']; ?></p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+<?php endforeach; ?>
+    <div class="pagination">
+      <a href="#" class="fa-solid fa-angle-left"></a>
+      <a href="#">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">...</a>
+      <a href="#" class="fa-solid fa-angle-right"></a>
     </div>
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
