@@ -1,4 +1,7 @@
 <?php
+
+use LDAP\Result;
+
 function koneksi(){
     $db = mysqli_connect('localhost', 'root', '', 'pw2024_tubes_233040056') or die ('koneksi ke db gagal');
     return $db;
@@ -21,49 +24,49 @@ return $rows;
 
 function upload()
 {
-    $nama_file = $_FILES['gambar']['name'];
-    $tipe_file = $_FILES['gambar']['type'];
-    $ukuran_file = $_FILES['gambar']['size'];
-    $error = $_FILES['gambar']['error'];
-    $tmp_file = $_FILES['gambar']['tmp_file'];
+    $namaFile = $_FILES['gambar']['name'];
+	$ukuranFile = $_FILES['gambar']['size'];
+	$error = $_FILES['gambar']['error'];
+	$tmpName = $_FILES['gambar']['tmp_name'];
 
-    if ($error == 4) {
-        echo "<script>
-            alert('pilih gambar terlebih dahulu!');
-        </script>";
-        return false;
-    }
+	// cek apakah tidak ada gambar yang diupload
+	if( $error === 4 ) {
+		echo "<script>
+				alert('pilih gambar terlebih dahulu!');
+			  </script>";
+		return false;
+	}
 
-    $daftar_gambar = ['jpg', 'jpeg', 'png'];
-    $ekstensi_file = explode('.', $nama_file);
-    $ekstensi_file = strtolower(end($ekstensi_file));
-    if (!in_array($ekstensi_file, $daftar_gambar)) {
-        echo "<script>
-        alert('yang anda pilih bukan gambar!');
-    </script>";
-    return false;
-    }
+	// cek apakah yang diupload adalah gambar
+	$ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
+	$ekstensiGambar = explode('.', $namaFile);
+	$ekstensiGambar = strtolower(end($ekstensiGambar));
+	if( !in_array($ekstensiGambar, $ekstensiGambarValid) ) {
+		echo "<script>
+				alert('yang anda upload bukan gambar!');
+			  </script>";
+		return false;
+	}
 
-    if ($tipe_file != 'image/jpeg' && $tipe_file != 'image/png') {
-        echo "<script>
-        alert('yang anda pilih bukan gambar!');
-    </script>";
-    return false;
-    }
+	// cek jika ukurannya terlalu besar
+	if( $ukuranFile > 1000000 ) {
+		echo "<script>
+				alert('ukuran gambar terlalu besar!');
+			  </script>";
+		return false;
+	}
 
-    if ($ukuran_file > 5000000) {
-        echo "<script>
-        alert('ukuran gambar terlalu besar!');
-    </script>";
-    return false;
-    }
+	// lolos pengecekan, gambar siap diupload
+	// generate nama gambar baru
+	$namaFileBaru = uniqid();
+	$namaFileBaru .= '.';
+	$namaFileBaru .= $ekstensiGambar;
 
-    $nama_file_baru = uniqid();
-    $nama_file_baru .= '.';
-    $nama_file_baru .= $ekstensi_file;
-    move_uploaded_file($tmp_file, '../images' . $nama_file_baru);
+	move_uploaded_file($tmpName, '../images/' . $namaFileBaru);
 
-    return $nama_file_baru;
+	return $namaFileBaru;
+
+   
 }
 
 

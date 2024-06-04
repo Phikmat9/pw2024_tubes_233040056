@@ -1,7 +1,10 @@
 <?php
 if (isset($_POST["submit"])) {
-    if ($_POST["username"] == "hikmat.pandu" && $_POST["password"] == "unpas925") {
-        header("Location: admin.php");
+    if ($_POST["username"] == "hikmat.pandu" && $_POST["password"] == "unpas925") 
+        header("Location: ../mymusic/admin.php ");
+    
+    if ($_POST["username"] == "pandu.raharja" && $_POST["password"] == "hikmat925") {
+        header("Location: ../mymusic/user.php ");
         exit;
     } else {
         $eror = true;

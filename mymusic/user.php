@@ -17,7 +17,7 @@ if (isset($_POST["cari"])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My Music</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../tampilan/style copy.css" />
+    <link rel="stylesheet" href="../tampilan/user_style.css" />
   </head>
   <body>
   <header>
@@ -34,21 +34,22 @@ if (isset($_POST["cari"])){
   </nav>
   </header>
 
-
-<?php $i=1;
-     foreach($music as $msc) :   ?>
-<div class="card" style="width: 18rem;">
-  <img src="../images/logo_default.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title"><?= $msc['judul']; ?></h5>
-    <p class="card-text"><h6><?= $msc['artis']; ?></h6></p>
-    <p class="card-text"><h6><?= $msc['album']; ?></h6></p>
-    <p class="card-text"><?= $msc['genre']; ?></p>
-    <p class="card-text"><?= $msc['durasi']; ?></p>
-    <a href="#" class="btn btn-primary">Download</a>
+<div class="card row">
+  <?php $i=1;
+  foreach($music as $msc) :  
+  ?>
+  <div class="card col-md-3" style="width: 18rem;">
+    <img src="<?= $msc['gambar']; ?>" class="card-img-top">
+      <h5 class="card-title"><?= $msc['judul']; ?></h5>
+      <p class="card-text"><h6><?= $msc['artis']; ?></h6></p>
+      <p class="card-text"><h6><?= $msc['album']; ?></h6></p>
+      <p class="card-text"><?= $msc['genre']; ?></p>
+      <p class="card-text"><?= $msc['durasi']; ?></p>
+      <a href="#" class="btn btn-primary">Download</a>
   </div>
+  <?php endforeach; ?>
 </div>
-<?php endforeach; ?>
+
     <div class="pagination">
       <a href="#" class="fa-solid fa-angle-left"></a>
       <a href="#">1</a>

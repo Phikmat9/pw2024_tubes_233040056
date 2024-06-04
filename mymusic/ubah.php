@@ -38,6 +38,7 @@ if (isset($_POST['ubah'])) {
             <div class="mb-3">
                 <label for="gambar" class="form-label">gambar</label>
                 <input type="file" class="form-control" id="gambar" name="gambar" required value="<?= $msc['gambar']; ?>">
+                
             </div>
             <div class="mb-3">
                 <label for="judul" class="form-label">judul</label>

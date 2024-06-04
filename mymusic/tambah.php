@@ -11,6 +11,7 @@ if (isset($_POST['tambah'])) {
     } else {
         echo "data gagal ditambahkan!";
     }
+    
 }
 
 ?>
