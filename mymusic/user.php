@@ -39,7 +39,7 @@ if (isset($_POST["cari"])){
   foreach($music as $msc) :  
   ?>
   <div class="card col-md-3" style="width: 18rem;">
-    <img src="<?= $msc['gambar']; ?>" class="card-img-top">
+    <img src="../images/<?= $msc['gambar']; ?>" class="card-img-top">
       <h5 class="card-title"><?= $msc['judul']; ?></h5>
       <p class="card-text"><h6><?= $msc['artis']; ?></h6></p>
       <p class="card-text"><h6><?= $msc['album']; ?></h6></p>

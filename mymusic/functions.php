@@ -107,12 +107,20 @@ function ubah ($data)
     $conn = koneksi();
 
     $id =  htmlspecialchars ($data['id']);
-    $gambar =  htmlspecialchars ($data['$gambar']);
+    $gambarLama =  htmlspecialchars ($data['$gambarLama']);
     $judul =  htmlspecialchars ($data['judul']);
     $artis =  htmlspecialchars ($data['artis']);
     $album =  htmlspecialchars ($data['album']);
     $genre =  htmlspecialchars ($data['genre']);
     $durasi =  htmlspecialchars ($data['durasi']);
+
+    if($_FILES['gambar']['error'] === 4) {
+        $gambar = $gambarLama;
+    } else {
+        $gambar = upload();
+    }
+
+
     $query = "UPDATE music SET
                 gambar = '$gambar',
                 judul = '$judul',

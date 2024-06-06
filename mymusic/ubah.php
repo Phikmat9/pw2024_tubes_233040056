@@ -33,8 +33,9 @@ if (isset($_POST['ubah'])) {
     <div class="container">
         <h1>Ubah Data music</h1>
 
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?= $msc['id']; ?>">
+            <div class="hidden" name="gambarLama" value="<?= $msc['id']; ?>"></div>
             <div class="mb-3">
                 <label for="gambar" class="form-label">gambar</label>
                 <input type="file" class="form-control" id="gambar" name="gambar" required value="<?= $msc['gambar']; ?>">
