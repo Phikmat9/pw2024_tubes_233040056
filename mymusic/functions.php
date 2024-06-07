@@ -80,7 +80,6 @@ function tambah ($data)
     $album =  htmlspecialchars ($data['album']);
     $genre =  htmlspecialchars ($data['genre']);
     $durasi =  htmlspecialchars ($data['durasi']);
-    // $gambar =  htmlspecialchars ($data['gambar']);
     $gambar = upload();
     if(!$gambar) {
         return false;

@@ -1,0 +1,74 @@
+body {
+  background-color: #6634c8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px;
+  margin: 0;
+  font-family: "Arial", sans-serif;
+}
+
+.container {
+  width: 50%;
+  max-width: 400px;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-family: "Ceviche One", cursive;
+  margin-bottom: 20px;
+  color: #6634c8;
+}
+
+p {
+  color: red;
+  font-weight: bold;
+}
+
+ul {
+  padding: 0;
+}
+
+ul form li {
+  font-family: sans-serif;
+  margin-bottom: 15px;
+  list-style: none;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+button {
+  cursor: pointer;
+  background-color: green;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: darkgreen;
+}

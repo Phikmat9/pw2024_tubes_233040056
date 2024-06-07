@@ -21,57 +21,13 @@ if (isset($_POST["submit"])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ceviche+One&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: antiquewhite;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 100px;
-        }
-
-        .container {
-            width: 310px;
-            height: 320px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: gray;
-        }
-
-        img {
-            width: 200px;
-            height: 200px;
-            margin-bottom: 20px;
-        }
-
-        ul form li {
-            font-family: "Ceviche One", system-ui;
-            margin-bottom: 10px;
-            list-style: none;
-        }
-
-        h1 {
-            font-family: "Ceviche One", system-ui;
-            margin-bottom: 20px;
-        }
-
-        p {
-            color: red;
-        }
-
-        button {
-            cursor: pointer;
-            background-color: green;
-        }
-    </style>
+    <link rel="stylesheet" href="register_style.css">
 </head>
 <body>
     <div class="container">
 
         <h1>Login Admin</h1>
-        <img src="" alt="">
+        <img src="../images/logo.jpg" alt="">
 
         <?php if (isset($eror)) : ?>
             <p>Username / Password salah!</p>
