@@ -1,6 +1,6 @@
 <?php
 
-require "functions.php";
+require '../mymusic/functions.php';
 $music= query("select * from music order by id desc");
 
 if (isset($_POST["cari"])){
@@ -17,22 +17,19 @@ if (isset($_POST["cari"])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin My Music</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-   
+    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+    <link rel="icon" type="icon/x-image" href="../images/logo_default" />
+    <script src="https://kit.fontawesome.com/ca43952785.js" crossorigin="anonymous"> </script>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-<header>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"><h1>MyMusic</h1></a>
-    <form action="" method="post">
-      <input type="text" name="keyword" size="40" autofocus
-      placeholder="masukkan keyword pencarian.." autocomplete="off">
-      <button type="submit" name="cari">Cari!</button>
-    </form>
-    </div>
-  </div>
-  </nav>
-</header>
+  <header>
+      <a href="#" class="logo"> <h1>MyMusic</h1> </a>
+      <form class="pencarian" action="" method="post">
+          <input type="text" name="keyword" size="40" autofocus placeholder="masukkan keyword pencarian.." autocomplete="off">
+          <button type="submit" name="cari"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+    </header>
 
   <div class="container">
         <a href="tambah.php" class="btn btn-primary">Tambah Daftar music</a>
@@ -55,7 +52,7 @@ if (isset($_POST["cari"])){
      foreach($music as $msc) :   ?>
     <tr>
       <td><?= $i++?></td>
-      <td><?= $msc['gambar']; ?></td>
+      <td><img src="../images/<?= $msc['gambar']; ?>" alt="" width="55px"></td>
       <td><?= $msc['judul']; ?></td>
       <td><?= $msc['artis']; ?></td>
       <td><?= $msc['album']; ?></td>

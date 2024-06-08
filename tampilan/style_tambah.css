@@ -1,0 +1,89 @@
+:root {
+  --color-primary: #800080;
+  --color-secondary: #a1a1a1;
+  --box-shadow: 0px 0px 10px rgba(165, 165, 165, 0.2);
+  --box-shadow-hover: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  --box-shadow-primary: rgba(128, 0, 128, 0.309) 0px 20px 25px -5px,
+    rgba(128, 0, 128, 0.309) 0px 10px 10px -5px;
+  --color-icon: white;
+  --padding-section: 20px 9%;
+  --padding-header: 0 9%;
+  --background-header: white;
+  --gradient: linear-gradient(
+    0deg,
+    rgba(51, 51, 51, 0.63) 0%,
+    rgba(196, 196, 196, 0) 100%
+  );
+}
+
+body {
+  --background-header: #181818;
+  --box-shadow-hover: rgba(128, 0, 128, 0.283) 0px 1px 2px,
+    rgba(128, 0, 128, 0.283) 0px 2px 4px, rgba(128, 0, 128, 0.283) 0px 4px 8px,
+    rgba(128, 0, 128, 0.283) 0px 8px 16px,
+    rgba(128, 0, 128, 0.283) 0px 16px 32px,
+    rgba(128, 0, 128, 0.283) 0px 32px 64px;
+  --box-shadow: none;
+  background-color: #111111;
+  color: white;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  outline: none;
+  font-family: Poppins, sans-serif;
+  box-sizing: border-box;
+}
+
+header {
+  padding: var(--padding-header);
+  box-shadow: var(--box-shadow);
+  background-color: var(--background-header);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+}
+
+/* tambah-lagu */
+.tambah-lagu {
+  padding: var(--padding-section);
+  margin-top: 80px;
+}
+
+.tambah-lagu h1 {
+  color: var(--color-primary);
+  margin-top: 10px;
+}
+
+.tambah-lagu form {
+  margin-top: 40px;
+}
+
+.tambah-lagu form label,
+.tambah-lagu form input,
+.tambah-lagu form textarea {
+  display: block;
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.tambah-lagu form label {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.tambah-lagu form input[type="text"],
+.tambah-lagu form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #303;
+}

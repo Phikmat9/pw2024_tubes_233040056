@@ -1,10 +1,10 @@
 <?php
 if (isset($_POST["submit"])) {
     if ($_POST["username"] == "hikmat.pandu" && $_POST["password"] == "unpas925") 
-        header("Location: ../mymusic/admin.php ");
+        header("Location: ../tampilan/admin.php ");
     
     if ($_POST["username"] == "pandu.raharja" && $_POST["password"] == "hikmat925") {
-        header("Location: ../mymusic/user.php ");
+        header("Location: ../tampilan/profil.php ");
         exit;
     } else {
         $eror = true;
@@ -20,14 +20,15 @@ if (isset($_POST["submit"])) {
     <title>login</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Ceviche+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="register_style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
 
-        <h1>Login Admin</h1>
-        <img src="../images/logo.jpg" alt="">
+        <h1>Login MyMusic</h1>
+       
 
         <?php if (isset($eror)) : ?>
             <p>Username / Password salah!</p>
@@ -45,6 +46,7 @@ if (isset($_POST["submit"])) {
                 </li>
                 <li>
                     <button type="submit" name="submit">Login</button>
+                    <button type="submit" name="reter">Reister</button>
                 </li>
             </form>
         </ul>
