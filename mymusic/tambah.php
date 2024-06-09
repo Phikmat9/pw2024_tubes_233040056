@@ -53,6 +53,10 @@ if (isset($_POST['tambah'])) {
                 <input type="text" class="form-control" id="durasi" name="durasi">
             </div>
             <div class="mb-3">
+            <label for="">Foto album (300x300)</label>
+                <label for="img" class="album"><i class="fa-solid fa-image"></i>
+                    <p>Add cover album</p>
+                </label>
                 <label for="gambar" class="form-label">gambar</label>
                 <input type="file" class="form-control" id="gambar" name="gambar">
             </div>

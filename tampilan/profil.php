@@ -25,7 +25,7 @@ if (isset($_POST["cari"])){
   </head>
 
   <body>
-    <header>
+  <header>
       <a href="#" class="logo"> <h1>MyMusic</h1> </a>
       <form class="pencarian" action="" method="post">
           <input type="text" name="keyword" size="40" autofocus placeholder="masukkan keyword pencarian.." autocomplete="off">

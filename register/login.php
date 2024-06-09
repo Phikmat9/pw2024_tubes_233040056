@@ -24,6 +24,14 @@ if (isset($_POST["submit"])) {
     <link href="https://fonts.googleapis.com/css2?family=Ceviche+One&display=swap" rel="stylesheet">
     <link rel="icon" type="icon/x-image" href="../images/logo.jpg" />
     <link rel="stylesheet" href="style.css">
+    <style>
+        .container {
+            background-color: #552084;
+        }
+        h1{
+            color: #fdba21;
+        }
+    </style>
 </head>
 <body>
     <div class="container">

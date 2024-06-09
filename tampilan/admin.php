@@ -23,19 +23,18 @@ if (isset($_POST["cari"])){
     <link rel="icon" type="icon/x-image" href="../images/logo.jpg" />
     <link rel="stylesheet" href="style.css">
   </head>
-  <body>
+<body>
   <header>
       <a href="#" class="logo"> <h1>MyMusic</h1> </a>
+      <a href="../mymusic/tambah.php" class="btn btn-primary" style="background-color: #fdba21;">Tambah Daftar music</a>
       <form class="pencarian" action="" method="post">
           <input type="text" name="keyword" size="40" autofocus placeholder="masukkan keyword pencarian.." autocomplete="off">
           <button type="submit" name="cari"><i class="fa-solid fa-magnifying-glass"></i></button>
       </form>
     </header>
 
-  <div class="container">
-        <a href="tambah.php" class="btn btn-primary">Tambah Daftar music</a>
-
-        <table class="table table-dark table-striped">
+  <div class="container" style="margin-top: 70px; ">
+  <table class="table table-dark table-striped">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -60,8 +59,8 @@ if (isset($_POST["cari"])){
       <td><?= $msc['genre']; ?></td>
       <td><?= $msc['durasi']; ?></td>
       <td>
-        <a href="ubah.php?id=<?= $msc['id'];?>"  class="badge text-bg-warning">Ubah</a>
-        <a href="hapus.php?id=<?= $msc["id"];?>" onclick="return confirm('yakin?');"><span class="badge text-bg-danger">Hapus</span></a>
+        <a href="../mymusic/ubah.php $msc['id'];?>"  class="badge text-bg-warning">Ubah</a>
+        <a href="../mymusic/hapus.php $msc['id'];?>" onclick="return confirm('yakin?');"><span class="badge text-bg-danger">Hapus</span></a>
       </td>
     </tr>
     <?php endforeach; ?>

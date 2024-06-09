@@ -1,6 +1,7 @@
 :root {
-  --color-primary: #800080;
+  --color-primary: #552084;
   --color-secondary: #a1a1a1;
+  --color3: #fdba21;
   --box-shadow: 0px 0px 10px rgba(165, 165, 165, 0.2);
   --box-shadow-hover: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
@@ -57,13 +58,13 @@ header {
 .logo {
   display: flex;
   align-items: center;
-  color: white;
+  color: var(--color3);
 }
 
 .logo h1 {
   margin-left: 20px;
   font-family: "Shrikhand", cursive;
-  color: #800080;
+  color: var(--color3);
 }
 
 form form {
@@ -80,7 +81,7 @@ form input[type="text"] {
 }
 
 form button[type="submit"] {
-  background-color: #ff9900;
+  background-color: var(--color3);
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -173,6 +174,7 @@ main {
   padding: var(--padding-section);
   z-index: 3;
   width: 100%;
+  margin-top: 50px;
 }
 
 .bg-cover {
