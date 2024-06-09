@@ -22,13 +22,12 @@ if (isset($_POST["submit"])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Ceviche+One&display=swap" rel="stylesheet">
+    <link rel="icon" type="icon/x-image" href="../images/logo.jpg" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-
         <h1>Login MyMusic</h1>
-       
 
         <?php if (isset($eror)) : ?>
             <p>Username / Password salah!</p>
@@ -50,8 +49,7 @@ if (isset($_POST["submit"])) {
                 </li>
             </form>
         </ul>
+
     </div>
-
 </body>
-
 </html>

@@ -20,6 +20,7 @@ if (isset($_POST["cari"])){
     <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
     <link rel="icon" type="icon/x-image" href="../images/logo_default" />
     <script src="https://kit.fontawesome.com/ca43952785.js" crossorigin="anonymous"> </script>
+    <link rel="icon" type="icon/x-image" href="../images/logo.jpg" />
     <link rel="stylesheet" href="style.css">
   </head>
   <body>

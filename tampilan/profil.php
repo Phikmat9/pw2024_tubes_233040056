@@ -14,7 +14,7 @@ if (isset($_POST["cari"])){
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>percobaan tampilan</title>
+    <title>MyMusic_web</title>
     <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
     <script
       src="https://kit.fontawesome.com/ca43952785.js"
@@ -44,13 +44,7 @@ if (isset($_POST["cari"])){
           <h3><?= $msc['judul']; ?></h3>
           <span> <?= $msc['artis']; ?></span>
 
-          <p>
-            <?= $msc['album']; ?><br>
-            <?= $msc['genre']; ?><br>
-            <?= $msc['durasi']; ?>
-          </p>
-
-          <a href="<?= $msc['id']; ?>" class="fa-solid fa-play"></a>
+          <a href="detail_music.php?id=<?= $msc['id']; ?>" class="fa-solid fa-play"></a>
         </div>
       </div>
       <?php endforeach; ?>
