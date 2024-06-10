@@ -1,8 +1,9 @@
 <?php
+
 session_start();
 
-if(!isset($_SESSION['login'])) {
-  header("locatin: ../function/login.php");
+if(!isset($_SESSION['login'])){
+  header("location: ../register/login.php");
   exit;
 }
 
@@ -37,7 +38,7 @@ if (isset($_POST["cari"])){
           <input type="text" name="keyword" size="20" autofocus placeholder="masukkan keyword pencarian.." autocomplete="off">
           <button type="submit" name="cari"><i class="fa-solid fa-magnifying-glass"></i></button>
       </form>
-      <a href="../function/logout.php" class="btn btn-prymary">Logout</a>
+      <a href="../register/logout.php" class="btn btn-prymary">Logout</a>
     </header>
 
   <div class="container" style="margin-top: 70px; ">

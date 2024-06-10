@@ -27,32 +27,25 @@ while($row = mysqli_fetch_assoc($result)){
 return $rows;
 }
 
-// insert data
-function tambah ($data)
+// tambah data
+function tambah($data)
 {
     $conn = koneksi();
-
+    // cek apakah data berhasil di tambahkan atau tidak
+    $gambar =  htmlspecialchars($data['gambar']);
+    $judul = htmlspecialchars($data['judul']);
+    $artis =  htmlspecialchars($data['artis']);
+    $album =  htmlspecialchars($data['album']);
+    $genre =  htmlspecialchars($data['genre']);
+    $durasi =  htmlspecialchars($data['durasi']);
     
-    $judul =  htmlspecialchars ($data['judul']);
-    $artis =  htmlspecialchars ($data['artis']);
-    $album =  htmlspecialchars ($data['album']);
-    $genre =  htmlspecialchars ($data['genre']);
-    $durasi =  htmlspecialchars ($data['durasi']);
 
-    // upload gambar
-	$gambar = upload();
-	if( !$gambar ) {
-		return false;
-	}
 
-	$query = "INSERT INTO music
-				VALUES
-			  (null, '$judul', '$artis', '$album', '$genre', '$durasi', '$gambar')
-			";
-	mysqli_query($conn, $query) or die (mysqli_error($conn));
-    echo mysqli_error($conn);
+    $sql = "INSERT INTO music VALUES
+            (null, '$gambar', '$judul', '$artis', '$album', '$genre', '$durasi')";
 
-	return mysqli_affected_rows($conn);
+    mysqli_query($conn, $sql) or die(mysqli_error($conn));
+    return mysqli_affected_rows($conn);
 }
 
 // function upload
@@ -168,28 +161,7 @@ function cari($keyword){
 }
 
 
-// login
-function login($data)
-{
-    $conn = koneksi();
 
-    $username = htmlspecialchars($data['username']);
-    $password = htmlspecialchars($data['password']);
-
-    // cek username
-    if( query("SELECT * FROM user WHERE username = '$username' && password = '$password' ")){
-        // set session
-        $_SESSION['login'] = true;
-
-        header("location: ../tampilan/user.php");
-        exit;
-        }else{
-        return [
-            'error' => true,
-            'pesan' => 'username / Password Salah!'
-        ];
-    }
-}
 
 
 

@@ -69,12 +69,24 @@ header {
   color: var(--color3);
 }
 
-form form {
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  color: white;
+  font-size: 24px;
+}
+
+nav {
   display: flex;
   align-items: center;
 }
 
-form input[type="text"] {
+.pencarian {
+  display: flex;
+  align-items: center;
+}
+
+.pencarian input[type="text"] {
   padding: 10px;
   border-radius: 5px;
   border: none;
@@ -82,7 +94,7 @@ form input[type="text"] {
   font-size: 14px;
 }
 
-form button[type="submit"] {
+.pencarian button[type="submit"] {
   background-color: var(--color3);
   color: #fff;
   border: none;
@@ -93,7 +105,7 @@ form button[type="submit"] {
   transition: background-color 0.3s ease;
 }
 
-form button[type="submit"]:hover {
+.pencarian button[type="submit"]:hover {
   background-color: #cc7a00;
 }
 
@@ -109,6 +121,8 @@ form button[type="submit"]:hover {
 .container {
   padding: auto;
   display: flex;
+  text-align: center;
+  width: auto;
 }
 
 /* main */
@@ -116,7 +130,7 @@ main {
   padding: var(--padding-section);
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 30px, 30px;
+  gap: 40px, 50px;
   margin-top: 100px;
   align-items: center;
 }
@@ -205,12 +219,6 @@ footer {
   }
 }
 
-@media (max-width: 1200px) {
-  main {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
 @media (max-width: 992px) {
   main {
     grid-template-columns: repeat(3, 1fr);
@@ -246,6 +254,21 @@ footer {
 
   .btn-prymary {
     margin-top: 10px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  nav.active {
+    display: flex;
   }
 }
 

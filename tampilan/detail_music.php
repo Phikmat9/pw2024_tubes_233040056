@@ -1,10 +1,4 @@
 <?php 
-session_start();
-
-if(!isset($_SESSION['login'])) {
-  header("locatin: ../function/login.php");
-  exit;
-}
 
 require '../function/functions.php';
 

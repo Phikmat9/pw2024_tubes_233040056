@@ -1,18 +1,10 @@
 <?php
-session_start();
-
-if(!isset($_SESSION['login'])) {
-  header("locatin: ../function/login.php");
-  exit;
-}
-
 require '../function/functions.php';
 $music = query("select * from music order by id desc");
 
 if (isset($_POST["cari"])){
   $music = cari($_POST["keyword"]);
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -27,19 +19,22 @@ if (isset($_POST["cari"])){
     <script src="https://kit.fontawesome.com/ca43952785.js" crossorigin="anonymous"> </script>
     <link rel="icon" type="icon/x-image" href="../images/logo.jpg" />
     <link rel="stylesheet" href="style.css">
-  </head>
+</head>
 
-  <body>
+<body>
   <header>
       <a href="#" class="logo"> <h1>MyMusic</h1> </a>
-      <form class="pencarian" action="" method="post">
-          <input type="text" name="keyword" size="40" autofocus placeholder="masukkan keyword pencarian.." autocomplete="off">
-          <button type="submit" name="cari"><i class="fa-solid fa-magnifying-glass"></i></button>
-      </form>
-      <a href="../register/login.php" class="btn btn-prymary">Logout</a>
-    </header>
+      <div class="menu-toggle" id="menu-toggle"><i class="fa fa-bars"></i></div>
+      <nav id="nav-menu">
+          <form class="pencarian" action="" method="post">
+              <input type="text" name="keyword" size="40" autofocus placeholder="masukkan keyword pencarian.." autocomplete="off">
+              <button type="submit" name="cari"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </form>
+          <a href="../register/logout.php" class="btn btn-prymary">Logout</a>
+      </nav>
+  </header>
 
-<div class="container">
+  <div class="container">
     <main>
       <?php $i = 1;
             foreach ($music as $msc) : ?>
@@ -50,15 +45,14 @@ if (isset($_POST["cari"])){
         <div class="judul">
           <h5><?= $msc['judul']; ?></h5>
           <p><?= $msc['genre']; ?></p>
-
           <a href="detail_music.php?id=<?= $msc['id']; ?>" class="fa-solid fa-play"></a>
         </div>
       </div>
       <?php endforeach; ?>
     </main>
-</div>
+  </div>
     
-<footer>
+  <footer>
     <div class="pagination">
       <a href="#" class="fa-solid fa-angle-left"></a>
       <a href="#">1</a>
@@ -67,8 +61,12 @@ if (isset($_POST["cari"])){
       <a href="#">...</a>
       <a href="#" class="fa-solid fa-angle-right"></a>
     </div>
-</footer>
+  </footer>
 
-    <script src=""></script>
-  </body>
+  <script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+      document.getElementById('nav-menu').classList.toggle('active');
+    });
+  </script>
+</body>
 </html>

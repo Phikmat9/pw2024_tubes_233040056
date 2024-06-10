@@ -1,10 +1,4 @@
 <?php
-session_start();
-
-if(!isset($_SESSION['login'])) {
-  header("locatin: login.php");
-  exit;
-}
 
 require 'functions.php';
 
@@ -50,7 +44,7 @@ if (isset($_POST['ubah'])) {
 </head>
   <body>
     <h1 style="margin-left: 20px; font-family: 'Shrikhand', cursive; color: var(--color3) ;">
-	   Ubah Data music</h1>
+	   Ubah Data music <a href="../tampilan/admin.php" class="btn btn-prymary">Kembali</a></h1>
        <div class="container ">
         <form action="" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="id" value="<?= $msc['id'];?>">
