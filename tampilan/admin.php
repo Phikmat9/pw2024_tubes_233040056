@@ -1,6 +1,12 @@
 <?php
+session_start();
 
-require '../mymusic/functions.php';
+if(!isset($_SESSION['login'])) {
+  header("locatin: ../function/login.php");
+  exit;
+}
+
+require '../function/functions.php';
 $music= query("select * from music order by id desc");
 
 if (isset($_POST["cari"])){
@@ -26,11 +32,12 @@ if (isset($_POST["cari"])){
 <body>
   <header>
       <a href="#" class="logo"> <h1>MyMusic</h1> </a>
-      <a href="../mymusic/tambah.php" class="btn btn-primary" style="background-color: #fdba21;">Tambah Daftar music</a>
+      <a href="../function/tambah.php" class="btn btn-prymary">Tambah Daftar music</a>
       <form class="pencarian" action="" method="post">
-          <input type="text" name="keyword" size="40" autofocus placeholder="masukkan keyword pencarian.." autocomplete="off">
+          <input type="text" name="keyword" size="20" autofocus placeholder="masukkan keyword pencarian.." autocomplete="off">
           <button type="submit" name="cari"><i class="fa-solid fa-magnifying-glass"></i></button>
       </form>
+      <a href="../function/logout.php" class="btn btn-prymary">Logout</a>
     </header>
 
   <div class="container" style="margin-top: 70px; ">
@@ -59,9 +66,8 @@ if (isset($_POST["cari"])){
       <td><?= $msc['genre']; ?></td>
       <td><?= $msc['durasi']; ?></td>
       <td>
-        <a href="../mymusic/ubah.php $msc['id'];?>"  class="badge text-bg-warning">Ubah</a>
-        <a href="../mymusic/hapus.php $msc['id'];?>" onclick="return confirm('yakin?');"><span class="badge text-bg-danger">Hapus</span></a>
-      </td>
+      <a href="../function/ubah.php?id=<?= $msc['id'];?>"  class="badge text-bg-warning">Ubah</a>
+        <a href="../function/hapus.php?id=<?= $msc['id'];?>" onclick="return confirm('yakin?');"><span class="badge text-bg-danger">Hapus</span></a>
     </tr>
     <?php endforeach; ?>
   </tbody>

@@ -1,5 +1,12 @@
 <?php
-require '../mymusic/functions.php';
+session_start();
+
+if(!isset($_SESSION['login'])) {
+  header("locatin: ../function/login.php");
+  exit;
+}
+
+require '../function/functions.php';
 $music = query("select * from music order by id desc");
 
 if (isset($_POST["cari"])){
@@ -10,18 +17,16 @@ if (isset($_POST["cari"])){
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MyMusic_web</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>user My Music</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
-    <script
-      src="https://kit.fontawesome.com/ca43952785.js"
-      crossorigin="anonymous">
-    </script>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="icon/x-image" href="../images/logo_default" />
+    <script src="https://kit.fontawesome.com/ca43952785.js" crossorigin="anonymous"> </script>
     <link rel="icon" type="icon/x-image" href="../images/logo.jpg" />
+    <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
@@ -31,8 +36,10 @@ if (isset($_POST["cari"])){
           <input type="text" name="keyword" size="40" autofocus placeholder="masukkan keyword pencarian.." autocomplete="off">
           <button type="submit" name="cari"><i class="fa-solid fa-magnifying-glass"></i></button>
       </form>
+      <a href="../register/login.php" class="btn btn-prymary">Logout</a>
     </header>
-   
+
+<div class="container">
     <main>
       <?php $i = 1;
             foreach ($music as $msc) : ?>
@@ -41,16 +48,17 @@ if (isset($_POST["cari"])){
           <img src="../images/<?= $msc['gambar'] ?>" class="cover-album" />
         </div>
         <div class="judul">
-          <h3><?= $msc['judul']; ?></h3>
-          <span> <?= $msc['artis']; ?></span>
+          <h5><?= $msc['judul']; ?></h5>
+          <p><?= $msc['genre']; ?></p>
 
           <a href="detail_music.php?id=<?= $msc['id']; ?>" class="fa-solid fa-play"></a>
         </div>
       </div>
       <?php endforeach; ?>
     </main>
-
+</div>
     
+<footer>
     <div class="pagination">
       <a href="#" class="fa-solid fa-angle-left"></a>
       <a href="#">1</a>
@@ -59,5 +67,8 @@ if (isset($_POST["cari"])){
       <a href="#">...</a>
       <a href="#" class="fa-solid fa-angle-right"></a>
     </div>
+</footer>
+
+    <script src=""></script>
   </body>
 </html>

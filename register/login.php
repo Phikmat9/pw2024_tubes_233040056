@@ -4,7 +4,7 @@ if (isset($_POST["submit"])) {
         header("Location: ../tampilan/admin.php ");
     
     if ($_POST["username"] == "pandu.raharja" && $_POST["password"] == "hikmat925") {
-        header("Location: ../tampilan/profil.php ");
+        header("Location: ../tampilan/user.php ");
         exit;
     } else {
         $eror = true;

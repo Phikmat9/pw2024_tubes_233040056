@@ -1,17 +1,18 @@
 <?php
 
-use LDAP\Result;
-
+// koneksi ke database
 function koneksi(){
     $db = mysqli_connect('localhost', 'root', '', 'pw2024_tubes_233040056') or die ('koneksi ke db gagal');
     return $db;
 }
 
 function query($sql){
+
+// koneksi database
 $conn = koneksi();
 
-
-$result = mysqli_query($conn, $sql);
+// uery untuk mengambil data
+$result = mysqli_query($conn, $sql) or die (mysqli_error($conn));
 
 // jika hanya satu data
 if (mysqli_num_rows($result) == 1) {
@@ -26,10 +27,38 @@ while($row = mysqli_fetch_assoc($result)){
 return $rows;
 }
 
-
-function upload()
+// insert data
+function tambah ($data)
 {
-    $namaFile = $_FILES['gambar']['name'];
+    $conn = koneksi();
+
+    
+    $judul =  htmlspecialchars ($data['judul']);
+    $artis =  htmlspecialchars ($data['artis']);
+    $album =  htmlspecialchars ($data['album']);
+    $genre =  htmlspecialchars ($data['genre']);
+    $durasi =  htmlspecialchars ($data['durasi']);
+
+    // upload gambar
+	$gambar = upload();
+	if( !$gambar ) {
+		return false;
+	}
+
+	$query = "INSERT INTO music
+				VALUES
+			  (null, '$judul', '$artis', '$album', '$genre', '$durasi', '$gambar')
+			";
+	mysqli_query($conn, $query) or die (mysqli_error($conn));
+    echo mysqli_error($conn);
+
+	return mysqli_affected_rows($conn);
+}
+
+// function upload
+function upload() {
+
+	$namaFile = $_FILES['gambar']['name'];
 	$ukuranFile = $_FILES['gambar']['size'];
 	$error = $_FILES['gambar']['error'];
 	$tmpName = $_FILES['gambar']['tmp_name'];
@@ -54,7 +83,7 @@ function upload()
 	}
 
 	// cek jika ukurannya terlalu besar
-	if( $ukuranFile > 1000000 ) {
+	if( $ukuranFile > 5000000 ) {
 		echo "<script>
 				alert('ukuran gambar terlalu besar!');
 			  </script>";
@@ -70,35 +99,10 @@ function upload()
 	move_uploaded_file($tmpName, '../images/' . $namaFileBaru);
 
 	return $namaFileBaru;
-
-   
 }
 
 
-function tambah ($data)
-{
-    $conn = koneksi();
-
-    
-    $judul =  htmlspecialchars ($data['judul']);
-    $artis =  htmlspecialchars ($data['artis']);
-    $album =  htmlspecialchars ($data['album']);
-    $genre =  htmlspecialchars ($data['genre']);
-    $durasi =  htmlspecialchars ($data['durasi']);
-    $gambar = upload();
-    if(!$gambar) {
-        return false;
-    }
-
-    $sql = "INSERT INTO music
-            VALUES (null, '$gambar', '$judul', '$artis', '$album', '$genre','$durasi')
-    ";
-
-    mysqli_query($conn, $sql) or die (mysqli_error($conn));
-
-    return mysqli_affected_rows($conn);
-}
-
+// delet data
 function hapus($id)
 {
     $conn = koneksi();
@@ -106,40 +110,47 @@ function hapus($id)
     return mysqli_affected_rows($conn);
 }
 
+// ubah data
 function ubah ($data)
 {
     $conn = koneksi();
 
-    $id =  htmlspecialchars ($data['id']);
-    $gambarLama =  htmlspecialchars ($data['$gambarLama']);
+    $id = $data['id'];
     $judul =  htmlspecialchars ($data['judul']);
     $artis =  htmlspecialchars ($data['artis']);
     $album =  htmlspecialchars ($data['album']);
     $genre =  htmlspecialchars ($data['genre']);
     $durasi =  htmlspecialchars ($data['durasi']);
-
-    if($_FILES['gambar']['error'] === 4) {
-        $gambar = $gambarLama;
-    } else {
-        $gambar = upload();
-    }
-
-
+    $gambarLama = htmlspecialchars($data["gambarLama"]);
+	
+	// cek apakah user pilih gambar baru atau tidak
+	if( $_FILES['gambar']['error'] === 4 ) {
+		$gambar = $gambarLama;
+	} else {
+		$gambar = upload();
+	}
+    
     $query = "UPDATE music SET
-                gambar = '$gambar',
                 judul = '$judul',
                 artis = '$artis',
                 album = '$album',
                 genre = '$genre',
-                durasi = '$durasi'
-            WHERE id = $id
-                ";
+                durasi = '$durasi',
+                gambar = '$gambar'
+            WHERE id = $id";
 
     mysqli_query($conn, $query) or die (mysqli_error($conn));
+
+    echo mysqli_error($conn);
+    
     return mysqli_affected_rows($conn);
 }
 
+// cari data
 function cari($keyword){
+
+    $conn = koneksi();
+
     $query = "SELECT * FROM music
                 WHERE
                 judul like '%$keyword%' OR
@@ -147,8 +158,39 @@ function cari($keyword){
                 album like '%$keyword%' OR
                 genre like '%$keyword%' 
                 ";
-    return query($query);
+    $result = mysqli_query($conn, $query);
+
+    $row = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+    return $rows;
 }
+
+
+// login
+function login($data)
+{
+    $conn = koneksi();
+
+    $username = htmlspecialchars($data['username']);
+    $password = htmlspecialchars($data['password']);
+
+    // cek username
+    if( query("SELECT * FROM user WHERE username = '$username' && password = '$password' ")){
+        // set session
+        $_SESSION['login'] = true;
+
+        header("location: ../tampilan/user.php");
+        exit;
+        }else{
+        return [
+            'error' => true,
+            'pesan' => 'username / Password Salah!'
+        ];
+    }
+}
+
 
 
 ?>

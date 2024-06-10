@@ -1,5 +1,12 @@
 <?php 
-require '../mymusic/functions.php';
+session_start();
+
+if(!isset($_SESSION['login'])) {
+  header("locatin: ../function/login.php");
+  exit;
+}
+
+require '../function/functions.php';
 
 $id = $_GET['id'];
 
@@ -16,21 +23,21 @@ $msc = query("SELECT * FROM music WHERE id = $id");
     <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
-    <script
-      src="https://kit.fontawesome.com/ca43952785.js"
-      crossorigin="anonymous">
-    </script>
-    <link rel="stylesheet" href="style_detail-music.css" />
+    <script src="https://kit.fontawesome.com/ca43952785.js" crossorigin="anonymous"></script>
     <link rel="icon" type="icon/x-image" href="../images/logo.jpg" />
+    <link rel="stylesheet" href="style_detail-music.css" />
   </head>
 
   <body>
   <header>
-      <a href="profil.php" class="logo"> <h1>MyMusic</h1> </a>
+      <a href="user.php" class="logo"> <h1>MyMusic</h1> </a>
       <form class="pencarian" action="" method="post">
-          <a href="#"  class="badge text-bg-info">Download</a>
+          <input type="text" name="keyword" size="40" autofocus placeholder="masukkan keyword pencarian.." autocomplete="off">
+          <button type="submit" name="cari"><i class="fa-solid fa-magnifying-glass"></i></button>
       </form>
+      <a href="../mymusic/logout.php" class="btn btn-prymary">Logout</a>
     </header>
+
     <div class="bg-cover" style="background-image: url(<?= $msc['gambar'] ?>);">
             <div class="cover-lirik">
                 <img src="../images/<?= $msc['gambar'] ?>" width="300px" >

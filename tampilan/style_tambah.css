@@ -61,7 +61,9 @@ header {
 }
 
 .tambah-lagu h1 {
-  color: var(--color-primary);
+  margin-left: 20px;
+  font-family: "Shrikhand", cursive;
+  color: var(--color3);
   margin-top: 10px;
 }
 
