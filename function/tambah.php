@@ -1,6 +1,6 @@
 <?php
 
-require 'functions.php';
+include 'functions.php';
 // cek apakah tombol tambah sudah di klilk atau belum
 if (isset($_POST['tambah'])) {
 
@@ -43,37 +43,35 @@ if (isset($_POST['tambah'])) {
         <form action="" method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="judul" class="form-label">Judul</label>
-                <input type="text" class="form-control" id="judul" name="judul" size="60"
-                autofocus required>
+                <input type="text" name="judul" class="form-control" id="judul" autofocus required>
+            </div>
+            <div class="mb-3">
+                <label for="judul" class="form-label">Judul</label>
+                <input type="text" name="judul" class="form-control" id="judul" autofocus required>
             </div>
             <div class="mb-3">
                 <label for="artis" class="form-label">Artis</label>
-                <input type="text" class="form-control" id="artis" name="artis" size="60"
-                required>
+                <input type="text" class="form-control" id="artis" name="artis" required>
             </div>
             <div class="mb-3">
                 <label for="album" class="form-label">Album</label>
-                <input type="text" class="form-control" id="album" name="album" size="60"
-                required>
+                <input type="text" class="form-control" id="album" name="album" required>
             </div>
             <div class="mb-3">
                 <label for="genre" class="form-label">Genre</label>
-                <input type="text" class="form-control" id="genre" name="genre" size="60"
-                required>
+                <input type="text" class="form-control" id="genre" name="genre" required>
             </div>
             <div class="mb-3">
                 <label for="durasi" class="form-label">Durasi</label>
-                <input type="text" class="form-control" id="durasi" name="durasi" size="60"
-                required>
+                <input type="text" class="form-control" id="durasi" name="durasi" required>
             </div>
             <div class="mb-3">
             <label for="">Foto album (300x300)</label>
-                <label for="gambar" class="gambar"><i class="fa-solid fa-image"></i>
+                <label for="gambar" class="from-label"><i class="fa-solid fa-image"></i>
                     <p>Add cover album</p>
                 </label>
                 <label for="gambar" class="form-label">gambar</label>
-                <input type="file" class="form-control" id="gambar" name="gambar" size="60"
-                required>
+                <input type="file" name="gambar" class="form-label" id="gambar" required>
             </div>
 
             <button type="submit" name= "tambah" class="btn btn-prymary">Tambah</button>

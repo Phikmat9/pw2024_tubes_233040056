@@ -32,7 +32,7 @@ function tambah($data)
 {
     $conn = koneksi();
     // cek apakah data berhasil di tambahkan atau tidak
-    $gambar =  htmlspecialchars($data['gambar']);
+    // $gambar =  htmlspecialchars($data['gambar']);
     $judul = htmlspecialchars($data['judul']);
     $artis =  htmlspecialchars($data['artis']);
     $album =  htmlspecialchars($data['album']);
@@ -42,9 +42,12 @@ function tambah($data)
 
 
     $sql = "INSERT INTO music VALUES
-            (null, '$gambar', '$judul', '$artis', '$album', '$genre', '$durasi')";
+            (null, '$judul', '$artis', '$album', '$genre', '$durasi')";
 
     mysqli_query($conn, $sql) or die(mysqli_error($conn));
+
+    echo mysqli_error($conn);
+
     return mysqli_affected_rows($conn);
 }
 
@@ -108,7 +111,7 @@ function ubah ($data)
 {
     $conn = koneksi();
 
-    $id = $data['id'];
+    $id_music= htmlspecialchars($data['id_music']);
     $judul =  htmlspecialchars ($data['judul']);
     $artis =  htmlspecialchars ($data['artis']);
     $album =  htmlspecialchars ($data['album']);
@@ -130,7 +133,7 @@ function ubah ($data)
                 genre = '$genre',
                 durasi = '$durasi',
                 gambar = '$gambar'
-            WHERE id = $id";
+            WHERE id_music = $id_music";
 
     mysqli_query($conn, $query) or die (mysqli_error($conn));
 
