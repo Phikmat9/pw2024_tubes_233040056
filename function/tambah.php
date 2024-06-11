@@ -1,6 +1,8 @@
 <?php
 
-include 'functions.php';
+require 'functions.php';
+
+
 // cek apakah tombol tambah sudah di klilk atau belum
 if (isset($_POST['tambah'])) {
 
@@ -34,17 +36,14 @@ if (isset($_POST['tambah'])) {
     <link rel="stylesheet" href="../tampilan/style.css">
 </head>
   <body>
-    <header>
         <h1 style="margin-left: 20px; font-family: 'Shrikhand', cursive; color: var(--color3) ;">
         Tambah Data music <a href="../tampilan/admin.php" class="btn btn-prymary">Kembali</a></h1> 
-    </header>
+    
     
     <div class="container ">     
         <form action="" method="post" enctype="multipart/form-data">
-            <div class="mb-3">
-                <label for="judul" class="form-label">Judul</label>
-                <input type="text" name="judul" class="form-control" id="judul" autofocus required>
-            </div>
+			
+    
             <div class="mb-3">
                 <label for="judul" class="form-label">Judul</label>
                 <input type="text" name="judul" class="form-control" id="judul" autofocus required>

@@ -39,7 +39,7 @@ if (isset($_POST["login"])) {
             <button type="submit" name="login" class="btn">Login</button>
         </div>
         <div class="form-group">
-            <a href="regisrati-user.php" class="btn">Tambah user baru!</a>
+            <a href="user_register.php" class="btn">Tambah user baru!</a>
         </div>
     </form>    
 </div>

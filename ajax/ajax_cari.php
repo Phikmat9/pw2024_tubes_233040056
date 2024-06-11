@@ -1,36 +1,36 @@
 <?php
-include '../function/functions.php';
-$music = cari($_GET['keyword']);
+require '../function/functions.php';
+
+
+
+    // $query = "SELECT * FROM music
+    //             WHERE
+    //             judul like '%$keyword%' OR
+    //             artis like '%$keyword%' OR
+    //             album like '%$keyword%' OR
+    //             genre like '%$keyword%' 
+    //             ";
+    // $music = query($query);
+
+
+
 ?>
-
-<div class="row gy-4 ">
-
-    <?php if (empty($music)) : ?>
-        <div class="col-md-4">
-            <div class="card" style="width: 18rem;">
-
-                <div class="card-body bg-danger text-center">
-                    <h5 class="card-title">DATA TIDAK DI TEMUKAN</h5>
-                </div>
-            </div>
+<table>
+<div class="container">
+    <main>
+      <!-- <?php $i = 1;
+            foreach ($music as $msc) : ?> -->
+      <div class="lagu">
+        <div class="cover">
+          <img src="../images/<?= $msc['gambar'] ?>" class="cover-album" />
         </div>
-    <?php endif ?>
-    <?php $i = 1;
-    foreach ($music as $msc) : ?>
-        <div class="col-md-3 col-6">
-            <div class="card" style="width: 14rem;">
-                <img src="../images/<?= $msc['gambar'] ?>" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                <div class="card-body">
-                    <h5 class="card-title"><?= $i++ ?>. <?= $msc['judul'] ?></h5>
-                    <h6 class="card-title"><?= $msc['artis'] ?></h6>
-                    <p class="card-text">
-                        <td><?= $msc['genre'] ?></td>
-                    </p>
-                    <a href="../tampilan/detail_music.php/?= $msc['id_music']; ?>">lihat detail</a>
-
-                </div>
-            </div>
+        <div class="judul">
+          <h5><?= $msc['judul']; ?></h5>
+          <p><?= $msc['genre']; ?></p>
+          <a href="detail_music.php?id=<?= $msc['id']; ?>" class="fa-solid fa-play"></a>
         </div>
-    <?php endforeach; ?>
-</div>
-</div>
+      </div>
+      <?php endforeach; ?>
+    </main>
+  </div>
+  </table>

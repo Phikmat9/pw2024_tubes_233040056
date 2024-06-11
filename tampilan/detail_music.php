@@ -29,7 +29,7 @@ $msc = query("SELECT * FROM music WHERE id = $id");
           <input type="text" name="keyword" size="40" autofocus placeholder="masukkan keyword pencarian.." autocomplete="off">
           <button type="submit" name="cari"><i class="fa-solid fa-magnifying-glass"></i></button>
       </form>
-      <a href="../mymusic/logout.php" class="btn btn-prymary">Logout</a>
+      <a href='../register/logout.php' class="btn btn-prymary">Logout</a>
     </header>
 
     <div class="bg-cover" style="background-image: url(<?= $msc['gambar'] ?>);">
@@ -63,11 +63,10 @@ $msc = query("SELECT * FROM music WHERE id = $id");
             <div class="lirik-lagu">
                 <h3>Lirik Lagu</h3>
                 <br>
-                <pre>
-                  <p>
-                    
-                  </p>
-                </pre>
+                
+                    lirik lagu belum ditambahkan
+                
+                
             </div>
         </section>
   
