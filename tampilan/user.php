@@ -19,6 +19,7 @@ if (isset($_POST["cari"])){
     <script src="https://kit.fontawesome.com/ca43952785.js" crossorigin="anonymous"> </script>
     <link rel="icon" type="icon/x-image" href="../images/logo.jpg" />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="path/to/your/css/style.css">
 </head>
 
 <body>
@@ -27,8 +28,8 @@ if (isset($_POST["cari"])){
       <div class="menu-toggle" id="menu-toggle"><i class="fa fa-bars"></i></div>
       <nav id="nav-menu">
           <form class="pencarian" action="" method="post">
-              <input type="text" name="keyword" size="40" autofocus placeholder="masukkan keyword pencarian.." autocomplete="off">
-              <button type="submit" name="cari"><i class="fa-solid fa-magnifying-glass"></i></button>
+              <input type="text" class="keyword" size="40" autofocus placeholder="search music...">
+              <button  name="tombol-cari"><i class="fa-solid fa-magnifying-glass"></i></button>
           </form>
           <a href="../register/logout.php" class="btn btn-prymary">Logout</a>
       </nav>
@@ -68,5 +69,6 @@ if (isset($_POST["cari"])){
       document.getElementById('nav-menu').classList.toggle('active');
     });
   </script>
+  <script src="path/to/your/js/script.js"></script>
 </body>
 </html>

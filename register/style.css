@@ -51,12 +51,20 @@ header {
   text-align: center;
 }
 
-h1 {
+.logo {
   display: flex;
   align-items: center;
   color: var(--color3);
+}
+
+.logo:hover {
+  transition: 0.3s;
+}
+
+.logo h1 {
+  margin-left: 20px;
   font-family: "Shrikhand", cursive;
-  text-align: center;
+  color: var(--color3);
 }
 
 .container {
